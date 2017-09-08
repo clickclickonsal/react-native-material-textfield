@@ -42,6 +42,7 @@ export default class TextField extends PureComponent {
     errorColor: 'rgb(213, 0, 0)',
 
     disabled: false,
+    showDottedUnderline: true,
   };
 
   static propTypes = {
@@ -72,6 +73,7 @@ export default class TextField extends PureComponent {
     errorColor: PropTypes.string,
 
     disabled: PropTypes.bool,
+    showDottedUnderline: PropTypes.bool,
 
     renderAccessory: PropTypes.func,
 
@@ -305,6 +307,7 @@ export default class TextField extends PureComponent {
       characterRestriction: limit,
       editable,
       disabled,
+      showDottedUnderline,
       animationDuration,
       fontSize,
       titleFontSize,
@@ -457,7 +460,7 @@ export default class TextField extends PureComponent {
     return (
       <View {...containerProps}>
         <Animated.View style={[styles.inputContainer, inputContainerStyle]}>
-          {disabled && <Line type='dotted' color={baseColor} />}
+          {disabled && showDottedUnderline  && <Line type='dotted' color={baseColor} />}
 
           <Label {...labelProps}>{label}</Label>
 
